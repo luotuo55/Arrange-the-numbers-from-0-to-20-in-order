@@ -2,7 +2,7 @@ import { ElephantPoint } from './types';
 
 // Coordinates for the connect-the-dots elephant (approximate relative positions 0-100)
 export const ELEPHANT_POINTS: ElephantPoint[] = [
-  { id: 1, x: 20, y: 70 }, // Tail
+  { id: 1, x: 15, y: 72 }, // Tail start (adjusted to not overlap with 20)
   { id: 2, x: 15, y: 50 }, // Back rear
   { id: 3, x: 20, y: 30 }, // Back top
   { id: 4, x: 40, y: 25 }, // Top mid
@@ -21,7 +21,7 @@ export const ELEPHANT_POINTS: ElephantPoint[] = [
   { id: 17, x: 30, y: 85 }, // Back Leg L
   { id: 18, x: 30, y: 60 }, // Underbelly rear
   { id: 19, x: 25, y: 65 }, // Rear curve
-  { id: 20, x: 20, y: 70 }, // Loop back to start (Tail)
+  { id: 20, x: 22, y: 68 }, // Loop back near start (Tail end)
 ];
 
 export const MISSING_NUMBERS_GAME = [

@@ -67,34 +67,38 @@ export const Stage4_Practice: React.FC = () => {
             </button>
         </div>
         <div className="relative w-full h-[400px] bg-gray-50 rounded-xl border overflow-hidden touch-none">
-           <svg className="absolute w-full h-full pointer-events-none">
+           <svg 
+            className="absolute w-full h-full pointer-events-none"
+            viewBox="0 0 100 100"
+            preserveAspectRatio="none"
+           >
               {/* Draw Lines */}
               <polyline 
                 points={completedDots.map(idx => {
                     const p = ELEPHANT_POINTS[idx];
-                    return `${p.x}%,${p.y}%`;
+                    return `${p.x},${p.y}`;
                 }).join(' ')}
                 fill="none"
                 stroke="#ec4899"
                 strokeWidth="4"
                 strokeLinecap="round"
                 strokeLinejoin="round"
+                vectorEffect="non-scaling-stroke"
               />
            </svg>
            
            {/* Draw Dots */}
            {ELEPHANT_POINTS.map((p, idx) => {
-               const isNext = idx === currentDotIndex;
                const isDone = idx < currentDotIndex;
                return (
                    <div 
                      key={p.id}
                      onClick={() => handleDotClick(idx)}
                      className={`
-                        absolute w-8 h-8 -ml-4 -mt-4 rounded-full flex items-center justify-center font-bold text-xs cursor-pointer transition-all duration-300
-                        ${isDone ? 'bg-pink-500 text-white scale-75' : ''}
-                        ${isNext ? 'bg-yellow-400 text-black scale-110 animate-pulse ring-4 ring-yellow-200 z-10' : ''}
-                        ${!isDone && !isNext ? 'bg-gray-300 text-gray-500' : ''}
+                        absolute w-8 h-8 -ml-4 -mt-4 rounded-full flex items-center justify-center font-bold text-xs cursor-pointer transition-all duration-300 shadow-sm
+                        ${isDone 
+                            ? 'bg-pink-500 text-white scale-75' 
+                            : 'bg-gray-200 text-gray-600 hover:bg-gray-300 hover:scale-110 border border-gray-300'}
                      `}
                      style={{ left: `${p.x}%`, top: `${p.y}%` }}
                    >
@@ -104,7 +108,7 @@ export const Stage4_Practice: React.FC = () => {
            })}
 
            {isElephantComplete && (
-               <div className="absolute inset-0 flex items-center justify-center bg-white/80 backdrop-blur-sm">
+               <div className="absolute inset-0 flex items-center justify-center bg-white/80 backdrop-blur-sm z-20">
                    <div className="text-center animate-bounce">
                        <span className="text-6xl">🐘</span>
                        <h2 className="text-3xl font-bold text-pink-600 mt-2">是大象！</h2>
